@@ -4,11 +4,11 @@ import MovieCard from "./MovieCard";
 
 function MovieListing() {
   const movies = useSelector((state) => state.movies.movies);
-  console.log(movies)
+  // console.log(movies);
   return (
     <div className="movie-wrapper text-white px-[40px]">
-      <div className="movie-list">
-        <h2 className="text-center text-4xl font-semibold">Movies</h2>
+      <h2 className="text-center text-4xl font-semibold">Movies</h2>
+      <div className="movie-list grid grid-cols-5 gap-4 py-5">
         {movies.Response === "True" ? (
           movies.Search.map((movie, index) => (
             <MovieCard key={index} data={movie} />
