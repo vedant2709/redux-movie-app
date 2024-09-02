@@ -1,6 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import MovieCard from "./MovieCard";
+import Error from "./Error";
+import Slider from "react-slick";
+import { Settings } from "../common/settings";
 
 function MovieListing() {
   const movies = useSelector((state) => state.movies.movies);
@@ -8,30 +11,36 @@ function MovieListing() {
   // console.log(shows);
   return (
     <div className="movie-wrapper text-white px-[40px]">
-      <h2 className="text-4xl font-semibold pt-6">Movies</h2>
-      <div className="movie-list grid grid-cols-5 gap-4 py-5">
-        {movies.Response === "True" ? (
-          movies.Search.map((movie, index) => (
-            <MovieCard key={index} data={movie} />
-          ))
-        ) : (
-          <div className="">
-            <h3>{movies.Error}</h3>
+      {shows.Response === "False" ? (
+        <Error />
+      ) : (
+        <>
+          <h2 className="text-4xl font-semibold pt-6">Movies</h2>
+          <div className="movie-list py-5">
+            <Slider {...Settings}>
+              {movies.Response === "True" ? (
+                movies.Search.map((movie, index) => (
+                  <MovieCard key={index} data={movie} />
+                ))
+              ) : (
+                <></>
+              )}
+            </Slider>
           </div>
-        )}
-      </div>
-      <h2 className="text-4xl font-semibold">Shows</h2>
-      <div className="movie-list grid grid-cols-5 gap-4 py-5">
-        {shows.Response === "True" ? (
-          shows.Search.map((show, index) => (
-            <MovieCard key={index} data={show} />
-          ))
-        ) : (
-          <div className="">
-            <h3>{movies.Error}</h3>
+          <h2 className="text-4xl font-semibold">Shows</h2>
+          <div className="movie-list py-5">
+            <Slider {...Settings}>
+              {shows.Response === "True" ? (
+                shows.Search.map((show, index) => (
+                  <MovieCard key={index} data={show} />
+                ))
+              ) : (
+                <></>
+              )}
+            </Slider>
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 }

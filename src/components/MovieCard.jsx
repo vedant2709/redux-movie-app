@@ -5,7 +5,7 @@ function MovieCard({ data }) {
   // console.log(data);
   return (
     <Link to={`/movie/${data.imdbID}`}>
-      <div className="bg-[#1a242f] h-[25vw] hover:shadow-lg hover:brightness-125 transition-all duration-300 cursor-pointer">
+      <div className="bg-[#1a242f] h-[25vw] hover:shadow-lg hover:brightness-125 transition-all duration-300 cursor-pointer ml-4">
         <div className="h-[70%] bg-blue-500 w-full overflow-hidden">
           <img
             src={data.Poster}

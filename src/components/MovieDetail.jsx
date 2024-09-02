@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchAsyncMovieOrShowDetail } from "../features/movies/movieSlice";
 import { removeSelectedMovieOrShow } from "../features/movies/movieSlice";
+import Loader from "./Loader";
 
 function MovieDetail() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function MovieDetail() {
   return (
     <div className="movie-section px-[40px] w-full flex py-8">
       {Object.keys(data).length === 0 ? (
-        <div className="text-white">...Loading</div>
+        <Loader/>
       ) : (
         <>
           <div className="left w-[75%]">
